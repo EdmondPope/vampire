@@ -264,8 +264,9 @@ function startlevel () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     info.changeLifeBy(-1)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite, location) {
-	
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
+    info.changeScoreBy(1)
+    tiles.setTileAt(location, assets.tile`transparency16`)
 })
 let current_level = 0
 let vampire: Sprite = null
@@ -304,6 +305,7 @@ vampire = sprites.create(img`
     ...bbbbbbbbbb...
     `, SpriteKind.Player)
 controller.moveSprite(vampire, 100, 0)
+info.setScore(0)
 info.setLife(3)
 current_level = 0
 startlevel()
