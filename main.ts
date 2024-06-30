@@ -1,6 +1,8 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (vampire.vy == 0) {
         vampire.vy = -150
+    } else {
+        vampire.vy = 300
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -122,6 +124,9 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
     )
     vampire.vy = 300
 })
+controller.up.onEvent(ControllerButtonEvent.Released, function () {
+	
+})
 function startlevel () {
     vampire.vy = 300
     if (current_level == 0) {
@@ -130,6 +135,8 @@ function startlevel () {
         tiles.setCurrentTilemap(tilemap`level7`)
     } else if (current_level == 2) {
         tiles.setCurrentTilemap(tilemap`level9`)
+    } else if (current_level == 3) {
+        tiles.setCurrentTilemap(tilemap`level12`)
     } else {
     	
     }
@@ -305,6 +312,7 @@ vampire = sprites.create(img`
     ...bbbbbbbbbb...
     `, SpriteKind.Player)
 controller.moveSprite(vampire, 100, 0)
+vampire.vy = 300
 info.setScore(0)
 info.setLife(3)
 current_level = 0
